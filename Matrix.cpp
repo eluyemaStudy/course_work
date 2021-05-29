@@ -65,19 +65,6 @@ bool Matrix::isMatrixQuadr(vector<vector<long double>> matrix) {
             return false;
     return true;
 }
-//void printTT(Matrix m){
-//    int c = m.getColumnNum();
-//    cout<<"\nColumn = "<<c;
-//    int r = m.getRowNum();
-//    cout<<"\nRow = "<<r<<endl;
-//    cout<<endl;
-//    for(int i = 0;i<r;i++) {
-//        for (int j = 0; j < c; j++)
-//            cout<<m.getElementByRowColumn(i,j)<<' ';
-//        cout<<endl;
-//    }
-//    cout<<endl;
-//}
 vector<vector<long double>> Matrix::transpositionMatrix() {
     vector<vector<long double>> transpMatr;
     for (int j = 0; j < mainMatrix[0].size(); j++) {
@@ -257,9 +244,8 @@ Matrix Matrix::getInverseMatrix() {
 
 long double Matrix::getMinor(int i, int j) {
     Matrix minor;
-    // PrintMatrix();
     vector<vector<long double>> minorVector;
-    // cout<<"i = "<<i<<"   j = "<<j<<endl;
+
     for (int q = 0; q < mainMatrix.size(); q++) {
         if (q == i)
             continue;
@@ -268,15 +254,12 @@ long double Matrix::getMinor(int i, int j) {
             if (k == j)
                 continue;
             else {
-                //cout<<mainMatrix[q][k]<<' ';
                 row.push_back(mainMatrix[q][k]);
             }
         }
         minorVector.push_back(row);
     }
-    //  printer(minorVector);
     minor.changeMainMatrix(minorVector);
-    //minor.PrintMatrix();
     long double det = minor.determ();
     return det;
 }
@@ -378,7 +361,6 @@ bool Matrix::isSymmetric(){
 bool Matrix::isSylvesterСriterion(){
     if(quadrMatrix){
     for(int i =1;i<=mainMatrix.size();i++){
-        cout<<endl<<"Determ  = "<<getAngleMatrix(i).determ()<<endl;
         if(getAngleMatrix(i).determ()<=0)
             return false;
         }

@@ -29,7 +29,6 @@ Matrix Gradient::getSolve() {
     Matrix X = getX0();
     Log.push_back(Method::getLogRow(X, X));
     Matrix r = A.getMultiplyMatrix(X).getSubtractMatrix(B);
-    int count = 0;
     do {
         Matrix Xbefore = X;
         Matrix subScalarElement = A.getInverseMatrix().getMultiplyMatrix(r);
