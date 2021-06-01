@@ -9,11 +9,11 @@ protected:
     Matrix A;
     Matrix B;
     long double e;
-    bool accuracyСheck(Matrix before, Matrix after);
+    bool accuracyCheck(Matrix before, Matrix after);
     Matrix getX0();
     void clearLog();
-    void setLog(vector<vector <long double>> Log);
-    vector<long double> getLogRow(Matrix before,Matrix after);
+    void setLog(std::vector<std::vector <long double>> Log);
+    std::vector<long double> getLogRow(Matrix before,Matrix after);
 public:
     Method( Matrix a, Matrix b,long double E);
     Matrix getA() const;

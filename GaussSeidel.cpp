@@ -5,7 +5,7 @@ Gauss_Seidel::Gauss_Seidel(Matrix a, Matrix b, long double E) : Method(a, b, E) 
 
 Matrix Gauss_Seidel::getSolve() {
     clearLog();
-    vector<vector<long double>> Log;
+    std::vector<std::vector<long double>> Log;
     Matrix L_star_inverse = A.getLowerTriangleMatrix().getAdditionMatrix(A.getDiagonalMatrix()).getInverseMatrix();
     Matrix U = A.getUpperTriangleMatrix();
     Matrix X = getX0();
@@ -15,7 +15,7 @@ Matrix Gauss_Seidel::getSolve() {
         Xbefore = X;
         X = L_star_inverse.getMultiplyMatrix(B.getSubtractMatrix(U.getMultiplyMatrix(X)));
         Log.push_back(getLogRow(Xbefore, X));
-    } while (!accuracyСheck(Xbefore, X));
+    } while (!accuracyCheck(Xbefore, X));
     log.changeMainMatrix(Log);
     return X;
 }

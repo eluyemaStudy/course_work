@@ -1,8 +1,7 @@
 #include "Method.h"
 #include "Matrix.h"
 #include "vector"
-using namespace std;
-bool Method::accuracyСheck(Matrix before, Matrix after) {
+bool Method::accuracyCheck(Matrix before, Matrix after) {
     if (before.getRowNum() == after.getRowNum() && before.getColumnNum() == after.getColumnNum()) {
         for (int i = 0; i < before.getRowNum(); i++)
             if (abs(after.getElementByRowColumn(i, 0) - before.getElementByRowColumn(i, 0)) > e)
@@ -14,9 +13,9 @@ bool Method::accuracyСheck(Matrix before, Matrix after) {
 
 Matrix Method::getX0() {
     Matrix X;
-    vector <vector<long double>> X0;
+    std::vector <std::vector<long double>> X0;
     for (int i = 0; i < B.getRowNum(); i++) {
-        vector<long double> element;
+        std::vector<long double> element;
         element.push_back(B.getElementByRowColumn(i, 0) / A.getElementByRowColumn(i, i));
         X0.push_back(element);
     }
@@ -29,14 +28,14 @@ void Method::clearLog() {
     log = Log;
 }
 
-void Method::setLog(vector <vector<long double>> Log) {
+void Method::setLog(std::vector <std::vector<long double>> Log) {
     log.changeMainMatrix(Log);
 }
 
-vector<long double> Method::getLogRow(Matrix before, Matrix after) {
+std::vector<long double> Method::getLogRow(Matrix before, Matrix after) {
     before = before.getTranspMatrix();
     after = after.getTranspMatrix();
-    vector<long double> logRow;
+    std::vector<long double> logRow;
     for (int i = 0; i < after.getColumnNum(); i++)
         logRow.push_back(after.getElementByRowColumn(0, i));
     for (int i = 0; i < after.getColumnNum(); i++)
